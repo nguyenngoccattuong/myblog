@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tổng Quan Ngôn Ngữ Lập Trình Java - CatmeoTech</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../style.css" rel="stylesheet">
+    <link href="blog-style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">CatmeoTech</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../resume.html">Resume</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="../blog.html">Blog</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="blog.html#java">Java Programming</a>
+                            <a class="dropdown-item" href="blog.html#javascript">JavaScript</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Floating Bubbles -->
+    <div class="floating-bubble bubble-1"></div>
+    <div class="floating-bubble bubble-2"></div>
+    <div class="floating-bubble bubble-3"></div>
+    <div class="floating-bubble bubble-4"></div>
+    <div class="floating-bubble bubble-5"></div>
+
+    <!-- <h1 class="page-title">Blog</h1> -->
+
+    <main class="blog-post">
+        <article>
+            <div class="post-header">
+                <div class="post-meta">
+                    <span class="post-date">22/12/2024</span>
+                    <span class="post-category">Java Programming</span>
+                </div>
+                <h1>Tổng Quan Ngôn Ngữ Lập Trình Java</h1>
+            </div>
+
+            <div class="post-content">
+                <p class="post-intro">
+                    Java là một ngôn ngữ lập trình hướng đối tượng, dựa trên lớp được thiết kế để giảm thiểu sự phụ thuộc thực thi. 
+                    Đây là ngôn ngữ lập trình đa năng, cho phép các nhà phát triển viết mã một lần và chạy ở mọi nơi. 
+                    Điều này nghĩa là mã Java sau khi biên dịch có thể chạy trên tất cả các nền tảng hỗ trợ Java mà không cần biên dịch lại.
+                </p>
+
+                <figure class="blog-image">
+                    <img src="../imgs/java_logo.png" alt="Java Programming Overview">
+                    <figcaption>Java Programming Overview</figcaption>
+                </figure>
+
+                <section class="post-section">
+                    <h2>Lịch sử ngôn ngữ lập trình Java</h2>
+                    <p>Java được khởi xướng vào tháng 6 năm 1991 bởi James Gosling, Mike Sheridan và Patrick Naughton tại Sun Microsystems. 
+                    Ban đầu, ngôn ngữ này có tên là "Oak," lấy cảm hứng từ cây sồi bên ngoài văn phòng của Gosling.</p>
+                    
+                    <div class="version-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Phiên bản</th>
+                                    <th>Ngày phát hành</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>JDK Beta</td>
+                                    <td>1995</td>
+                                </tr>
+                                <tr>
+                                    <td>JDK 1.0</td>
+                                    <td>23/01/1996</td>
+                                </tr>
+                                <tr>
+                                    <td>JDK 1.1</td>
+                                    <td>19/02/1997</td>
+                                </tr>
+                                <tr>
+                                    <td>J2SE 1.2</td>
+                                    <td>08/12/1998</td>
+                                </tr>
+                                <tr>
+                                    <td>J2SE 1.3</td>
+                                    <td>08/05/2000</td>
+                                </tr>
+                                <tr>
+                                    <td>J2SE 1.4</td>
+                                    <td>06/02/2002</td>
+                                </tr>
+                                <tr>
+                                    <td>J2SE 5.0</td>
+                                    <td>30/09/2004</td>
+                                </tr>
+                                <tr>
+                                    <td>Java SE 6</td>
+                                    <td>11/12/2006</td>
+                                </tr>
+                                <tr>
+                                    <td>Java SE 7</td>
+                                    <td>28/07/2011</td>
+                                </tr>
+                                <tr>
+                                    <td>Java SE 8 (LTS)</td>
+                                    <td>18/03/2014</td>
+                                </tr>
+                                <tr>
+                                    <td>Java SE 9</td>
+                                    <td>21/09/2017</td>
+                                </tr>
+                                <tr>
+                                    <td>Java SE 10</td>
+                                    <td>20/03/2018</td>
+                                </tr>
+                                <tr>
+                                    <td>Java SE 11 (LTS)</td>
+                                    <td>25/09/2018</td>
+                                </tr>
+                                <tr>
+                                    <td>Java SE 12</td>
+                                    <td>19/03/2019</td>
+                                </tr>
+                                <tr>
+                                    <td>Java SE 13</td>
+                                    <td>17/09/2019</td>
+                                </tr>
+                                <tr>
+                                    <td>Java SE 14</td>
+                                    <td>17/03/2020</td>
+                                </tr>
+                                <tr>
+                                    <td>Java SE 15</td>
+                                    <td>15/09/2020</td>
+                                </tr>
+                                <tr>
+                                    <td>Java SE 16</td>
+                                    <td>16/03/2021</td>
+                                </tr>
+                                <tr>
+                                    <td>Java SE 17 (LTS)</td>
+                                    <td>14/09/2021</td>
+                                </tr>
+                                <tr>
+                                    <td>Java SE 18</td>
+                                    <td>22/03/2022</td>
+                                </tr>
+                                <tr>
+                                    <td>Java SE 19</td>
+                                    <td>20/09/2022</td>
+                                </tr>
+                                <tr>
+                                    <td>Java SE 20</td>
+                                    <td>21/03/2023</td>
+                                </tr>
+                                <tr>
+                                    <td>Java SE 21 (LTS)</td>
+                                    <td>19/09/2023</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="post-section">
+                    <h2>Đặc điểm nổi bật của Java</h2>
+                    
+                    <h3>1. Hướng đối tượng (OOP)</h3>
+                    <p>Java là ngôn ngữ lập trình hướng đối tượng, tập trung vào dữ liệu và các đối tượng. 
+                    Điều này giúp tổ chức mã dễ quản lý, mở rộng và tái sử dụng.</p>
+
+                    <h3>2. Đơn giản và dễ học</h3>
+                    <p>Java thừa hưởng cú pháp từ C và C++, nhưng loại bỏ những tính năng phức tạp như con trỏ, 
+                    ghi đè toán tử, giúp ngôn ngữ trở nên dễ học và dễ hiểu.</p>
+
+                    <h3>3. Nền tảng độc lập</h3>
+                    <p>Java biên dịch mã thành bytecode, có thể chạy trên bất kỳ hệ điều hành nào có JVM. 
+                    Điều này đảm bảo tính độc lập với nền tảng.</p>
+
+                    <h3>4. Tính bảo mật cao</h3>
+                    <p>Java cung cấp các thuật toán mã hóa mạnh mẽ như mã hóa một chiều và mã hóa công cộng, 
+                    giúp bảo vệ dữ liệu và giảm nguy cơ bị tấn công.</p>
+
+                    <h3>5. Đa luồng (Multithreading)</h3>
+                    <p>Java hỗ trợ tạo và quản lý các luồng, giúp xây dựng các ứng dụng thực hiện đồng thời nhiều tác vụ.</p>
+
+                    <h3>6. Hiệu suất cao</h3>
+                    <p>Quá trình kiểm tra lỗi diễn ra cả khi biên dịch và trong runtime, giúp giảm thiểu lỗi và cải thiện hiệu suất.</p>
+
+                    <figure class="blog-image">
+                        <img src="../imgs/java2.png" alt="Java Applications">
+                        <figcaption>Các ứng dụng phổ biến của Java</figcaption>
+                    </figure>
+                </section>
+
+                <section class="post-section">
+                    <h2>Ứng dụng của Java</h2>
+                    <ul>
+                        <li><strong>Phát triển ứng dụng Android:</strong> Java là ngôn ngữ chính trong phát triển ứng dụng Android.</li>
+                        <li><strong>Phần mềm doanh nghiệp:</strong> Java phổ biến trong xây dựng các hệ thống quản lý doanh nghiệp.</li>
+                        <li><strong>Ứng dụng khoa học:</strong> Được sử dụng trong nghiên cứu khoa học và xử lý Big Data.</li>
+                        <li><strong>Phát triển web:</strong> Nhiều công nghệ web server như Apache, GlassFish sử dụng Java.</li>
+                    </ul>
+                </section>
+
+                <section class="post-section">
+                    <h2>Thành phần chính của Java</h2>
+
+                    <figure class="blog-image">
+                        <img src="../imgs/java1.png" alt="Java Architecture">
+                        <figcaption>Kiến trúc Java: JDK, JRE và JVM</figcaption>
+                    </figure>
+                    
+                    <h3>1. Bộ phát triển Java (JDK)</h3>
+                    <p>JDK cung cấp môi trường để phát triển và thực thi các ứng dụng Java. 
+                    Có thể cài đặt nhiều phiên bản JDK trên một máy tính.</p>
+
+                    <h3>2. Máy ảo Java (JVM)</h3>
+                    <p>JVM chuyển đổi bytecode thành ngôn ngữ máy để thực thi trên nền tảng cụ thể. 
+                    Đây là yếu tố chính giúp Java đạt được tính độc lập với nền tảng.</p>
+
+                    <h3>3. Môi trường runtime Java (JRE)</h3>
+                    <p>JRE là môi trường cần thiết để chạy các chương trình Java.</p>
+                </section>
+
+                <section class="post-section">
+                    <h2>Ưu và nhược điểm của Java</h2>
+                    
+                    <h3>Ưu điểm</h3>
+                    <ul>
+                        <li>Độc lập với nền tảng</li>
+                        <li>Hướng đối tượng, dễ quản lý mã nguồn</li>
+                        <li>Bảo mật cao</li>
+                        <li>Hỗ trợ đa luồng</li>
+                        <li>Dễ học, dễ hiểu</li>
+                    </ul>
+
+                    <h3>Nhược điểm</h3>
+                    <ul>
+                        <li>Hiệu suất không bằng các ngôn ngữ cấp thấp như C++</li>
+                        <li>GUI hạn chế với các công cụ như Swing hay JavaFX</li>
+                        <li>Mã dài và phức tạp có thể khó bảo trì</li>
+                    </ul>
+                </section>
+
+                <section class="post-section">
+                    <h2>Kết luận</h2>
+                    <p>Java là ngôn ngữ lập trình mạnh mẽ, phổ biến trong nhiều lĩnh vực từ phát triển ứng dụng di động đến 
+                    phần mềm doanh nghiệp. Với lịch sử lâu đời và cộng đồng phát triển mạnh mẽ, Java vẫn giữ vai trò quan trọng 
+                    trong ngành công nghệ thông tin.</p>
+                </section>
+            </div>
+        </article>
+
+        <div class="post-navigation">
+            <a href="java-oop.html" class="prev-post">← OOP trong Java</a>
+            <a href="#" class="next-post">Bài sau →</a>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-java.min.js"></script>
+    <script src="../script.js"></script>
+</body>
+</html> 

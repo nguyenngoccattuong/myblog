@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Clean Code: 5 Best Practices - CatmeoTech</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../style.css" rel="stylesheet">
+    <link href="blog-style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">CatmeoTech</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../resume.html">Resume</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="../blog.html">Blog</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="blog.html#java">Java Programming</a>
+                            <a class="dropdown-item" href="blog.html#javascript">JavaScript</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Floating Bubbles -->
+    <div class="floating-bubble bubble-1"></div>
+    <div class="floating-bubble bubble-2"></div>
+    <div class="floating-bubble bubble-3"></div>
+    <div class="floating-bubble bubble-4"></div>
+    <div class="floating-bubble bubble-5"></div>
+
+    <!-- <h1 class="page-title">Blog</h1> -->
+
+    <main class="blog-post">
+        <article>
+            <div class="post-header">
+                <div class="post-meta">
+                    <span class="post-date">20/12/2024</span>
+                    <span class="post-category">Java Programming</span>
+                </div>
+                <h1>Java Clean Code: 5 Best Practices</h1>
+            </div>
+
+            <div class="post-content">
+                <p class="post-intro">
+                    Viết code sạch (clean code) không chỉ làm cho chương trình chạy ổn định mà còn giúp dễ đọc,
+                    dễ bảo trì và mở rộng. Trong bài viết này, chúng ta sẽ khám phá 5 nguyên tắc giúp bạn
+                    nâng cao chất lượng mã nguồn trong Java.
+                </p>
+
+                <section class="post-section">
+                    <h2>1. SOLID Principles</h2>
+                    <p>SOLID là 5 nguyên tắc thiết kế phần mềm giúp tăng tính dễ bảo trì và mở rộng cho dự án:</p>
+
+                    <h3>S: Single Responsibility Principle (Nguyên tắc đơn trách nhiệm)</h3>
+                    <p>Mỗi class chỉ nên có một trách nhiệm duy nhất. Điều này giúp code dễ bảo trì hơn vì thay đổi một
+                        logic sẽ không ảnh hưởng đến những phần khác.</p>
+                    <pre>
+                            <code class="language-java">
+class InvoicePrinter {
+    void printInvoice(Invoice invoice) {
+        // Logic chỉ để in hóa đơn
+    }
+}</code>
+                    </pre>
+
+                    <h3>O: Open/Closed Principle (Nguyên tắc mở/đóng)</h3>
+                    <p>Class nên "mở" để mở rộng nhưng "đóng" để chỉnh sửa. Điều này nghĩa là bạn có thể thêm tính năng
+                        mới mà không cần sửa đổi code cũ.</p>
+                    <pre><code class="language-java">interface Shape {
+    double calculateArea();
+}
+
+class Circle implements Shape {
+    private double radius;
+    public double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+}</code></pre>
+
+                    <h3>L: Liskov Substitution Principle (Nguyên tắc thay thế Liskov)</h3>
+                    <p>Subclass có thể thay thế superclass mà không làm thay đổi hành vi của chương trình.</p>
+                    <pre><code class="language-java">// Ví dụ về LSP
+class Bird {
+    void fly() {
+        // Logic để bay
+    }
+}
+
+class Sparrow extends Bird {
+    @Override
+    void fly() {
+        // Chim sẻ bay bình thường
+    }
+}
+
+// Porblematic: Penguin không thể bay!
+class Penguin extends Bird {
+    @Override
+    void fly() {
+        throw new UnsupportedOperationException(); // Vi phạm LSP
+    }
+}</code></pre>
+
+                    <h3>I: Interface Segregation Principle (Nguyên tắc phân tách giao diện)</h3>
+                    <p>Không nên ép các class implement những phương thức mà chúng không sử dụng.</p>
+                    <pre><code class="language-java">// Kém
+interface Worker {
+    void work();
+    void eat();
+    void sleep();
+}
+
+// Tốt
+interface Workable {
+    void work();
+}
+
+interface Eatable {
+    void eat();
+}
+
+interface Sleepable {
+    void sleep();
+}
+
+class Human implements Workable, Eatable, Sleepable {
+    // Implement các phương thức cần thiết
+}</code></pre>
+
+                    <h3>D: Dependency Inversion Principle (Nguyên tắc đảo ngược sự phụ thuộc)</h3>
+                    <p>Các module cấp cao không nên phụ thuộc vào các module cấp thấp. Cả hai nên phụ thuộc vào
+                        abstraction.</p>
+                    <pre><code class="language-java">// Kém
+class EmailService {
+    void sendEmail(String message) {
+        // Gửi email
+    }
+}
+
+class NotificationService {
+    private EmailService emailService = new EmailService();
+    void notify(String message) {
+        emailService.sendEmail(message);
+    }
+}
+
+// Tốt
+interface MessageService {
+    void sendMessage(String message);
+}
+
+class EmailService implements MessageService {
+    public void sendMessage(String message) {
+        // Gửi email
+    }
+}
+
+class NotificationService {
+    private MessageService messageService; // Dependency injection
+    
+    NotificationService(MessageService service) {
+        this.messageService = service;
+    }
+    
+    void notify(String message) {
+        messageService.sendMessage(message);
+    }
+}</code></pre>
+                </section>
+
+                <section class="post-section">
+                    <h2>2. Meaningful Naming (Đặt tên có ý nghĩa)</h2>
+                    <p>Tên biến, hàm, và class phải mô tả rõ chức năng để người đọc hiểu ngay mà không cần giải thích.
+                    </p>
+                    <ul>
+                        <li><strong>Sai:</strong> Tên chung chung như <code>temp</code>, <code>data</code>,
+                            <code>process</code>
+                        </li>
+                        <li><strong>Đúng:</strong> Tên cụ thể như <code>totalAmount</code>,
+                            <code>calculateDiscount</code>, <code>invoicePrinter</code>
+                        </li>
+                    </ul>
+                    <pre><code class="language-java">// Kém
+int d = calculate(a, b);
+
+// Tốt
+int discountAmount = calculateDiscount(price, quantity);</code></pre>
+                </section>
+
+                <section class="post-section">
+                    <h2>3. Method Size (Hàm ngắn gọn)</h2>
+                    <p>Mỗi hàm chỉ nên thực hiện một nhiệm vụ duy nhất và nên ngắn gọn. Nếu một hàm dài hơn 20-30 dòng, 
+                    hãy chia nhỏ thành các hàm con.</p>
+                    <ul>
+                        <li><strong>Sai:</strong> Một hàm làm quá nhiều việc.</li>
+                        <li><strong>Đúng:</strong> Tách các nhiệm vụ riêng biệt thành các hàm nhỏ hơn.</li>
+                    </ul>
+                    <pre><code class="language-java">// Kém
+void processOrder() {
+    validateOrder();
+    calculateTotal();
+    applyDiscount();
+    generateInvoice();
+}
+
+// Tốt
+void processOrder() {
+    validateOrder();
+    calculateTotal();
+    generateInvoice();
+}</code></pre>
+                    <p>Hàm ngắn gọn giúp code dễ đọc, dễ kiểm tra và bảo trì hơn.</p>
+                </section>
+
+                <section class="post-section">
+                    <h2>4. Comments (Bình luận hợp lý)</h2>
+                    <p>Bình luận (comments) nên được sử dụng để giải thích logic phức tạp hoặc cung cấp bối cảnh, 
+                    thay vì giải thích những điều hiển nhiên.</p>
+                    <ul>
+                        <li><strong>Sai:</strong> Viết bình luận cho những đoạn code đã rõ ràng.</li>
+                        <li><strong>Đúng:</strong> Chỉ bình luận khi cần thiết để giải thích ý nghĩa hoặc bối cảnh.</li>
+                    </ul>
+                    <pre><code class="language-java">// Kém: Không cần thiết vì code đã rõ ràng
+// Tính tổng
+int total = price * quantity;
+
+// Tốt: Giải thích bối cảnh
+// Chỉ áp dụng giảm giá nếu số lượng lớn hơn 10
+if (quantity > 10) {
+    applyDiscount();
+}</code></pre>
+                    <p>Hãy để code tự giải thích, dùng bình luận để bổ sung khi cần.</p>
+                </section>
+
+                <section class="post-section">
+                    <h2>5. Exception Handling (Xử lý ngoại lệ hiệu quả)</h2>
+                    <p>Xử lý exception không chỉ để tránh lỗi runtime, mà còn cung cấp thông tin hữu ích cho việc debug. 
+                    Tránh việc "nuốt lỗi" (bỏ qua lỗi mà không làm gì).</p>
+                    <ul>
+                        <li><strong>Sai:</strong> Bắt lỗi nhưng không làm gì.</li>
+                        <li><strong>Đúng:</strong> Log lỗi và cung cấp thông tin rõ ràng.</li>
+                    </ul>
+                    <pre><code class="language-java">// Kém
+try {
+    processPayment();
+} catch (Exception e) {
+    // Không làm gì
+}
+
+// Tốt
+try {
+    processPayment();
+} catch (PaymentException e) {
+    logger.error("Payment failed: " + e.getMessage());
+    throw new RuntimeException("Cannot process payment", e);
+}</code></pre>
+                    <p>Xử lý lỗi đúng cách giúp dễ dàng tìm ra nguyên nhân và sửa chữa.</p>
+                </section>
+
+                <section class="post-section">
+                    <h2>Kết luận</h2>
+                    <p>Viết code sạch không chỉ là một kỹ năng, mà còn là một nghệ thuật cần được trau dồi. 
+                    Bằng cách áp dụng 5 nguyên tắc trên:</p>
+                    <ul>
+                        <li>Áp dụng SOLID Principles</li>
+                        <li>Đặt tên có ý nghĩa</li>
+                        <li>Giữ hàm ngắn gọn</li>
+                        <li>Viết bình luận hợp lý</li>
+                        <li>Xử lý ngoại lệ hiệu quả</li>
+                    </ul>
+                    <p>Bạn sẽ cải thiện đáng kể chất lượng mã nguồn, làm cho công việc bảo trì và mở rộng trở nên dễ dàng hơn. 
+                    Hãy thực hành ngay hôm nay để tạo ra những dòng code không chỉ "chạy được" mà còn "đẹp"!</p>
+                </section>
+            </div>
+        </article>
+
+        <div class="post-navigation">
+            <a href="#" class="prev-post">← Bài trước</a>
+            <a href="#" class="next-post">Bài sau →</a>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-java.min.js"></script>
+    <script src="../script.js"></script>
+</body>
+
+</html>

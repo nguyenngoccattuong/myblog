@@ -131,4 +131,39 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             behavior: 'smooth'
         });
     });
+});
+
+// Active navigation based on current page
+function setActiveNavItem() {
+    // Get current page filename
+    const currentPage = window.location.pathname.split('/').pop();
+    console.log('Current page:', currentPage); // For debugging
+    
+    // Get all nav links
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    navLinks.forEach(link => {
+        // Get the href value
+        const href = link.getAttribute('href');
+        console.log('Checking link:', href); // For debugging
+        
+        // Remove any existing active classes
+        link.classList.remove('active');
+        
+        // Compare current page with href
+        if (currentPage === href) {
+            link.classList.add('active');
+            console.log('Match found! Adding active class to:', href); // For debugging
+        }
+        
+        // Special case for home page
+        if (currentPage === '' && href === 'index.html') {
+            link.classList.add('active');
+        }
+    });
+}
+
+// Call when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    setActiveNavItem();
 }); 

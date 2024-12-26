@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tổng Quan Ngôn Ngữ Lập Trình JavaScript - CatmeoBlog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../style.css" rel="stylesheet">
+    <link href="blog-style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Portfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../resume.html">Resume</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="../blog.html">Blog</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="blog.html#java">Java Programming</a>
+                            <a class="dropdown-item" href="blog.html#javascript">JavaScript</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Floating Bubbles -->
+    <div class="floating-bubble bubble-1"></div>
+    <div class="floating-bubble bubble-2"></div>
+    <div class="floating-bubble bubble-3"></div>
+    <div class="floating-bubble bubble-4"></div>
+    <div class="floating-bubble bubble-5"></div>
+
+    <!-- <h1 class="page-title">Blog</h1> -->
+
+    <main class="blog-post">
+        <article>
+            <header class="post-header">
+                <div class="post-meta">
+                    <div>
+                        <span>24/12/2024</span>
+                    </div>
+                    <div>
+                        <span>JavaScript</span>
+                    </div>
+                </div>
+                <h1>JavaScript Overview: Ngôn ngữ Lập trình của Web Hiện đại</h1>
+            </header>
+
+            <div class="post-content">
+                <div class="post-intro">
+                    JavaScript đã và đang định hình cách chúng ta tương tác với web. Từ những trang web tĩnh đơn giản đến các ứng dụng web phức tạp, JavaScript đóng vai trò then chốt trong việc tạo ra trải nghiệm người dùng động và tương tác.
+                </div>
+
+                <section class="post-section">
+                    <h2>JavaScript là gì?</h2>
+                    <p>JavaScript là một ngôn ngữ lập trình bậc cao, được thông dịch và tuân theo chuẩn ECMAScript. Ban đầu được thiết kế để chạy trên trình duyệt, nhưng ngày nay JavaScript có thể chạy ở hầu hết mọi nơi - từ máy chủ đến thiết bị IoT.</p>
+
+                    <h3>Đặc điểm nổi bật:</h3>
+                    <ul>
+                        <li><strong>Đa mô hình</strong>: Hỗ trợ lập trình hướng đối tượng, hàm và mệnh lệnh</li>
+                        <li><strong>Kiểu dữ liệu động</strong>: Không cần khai báo kiểu dữ liệu trước</li>
+                        <li><strong>First-class Functions</strong>: Hàm được xem như một kiểu dữ liệu</li>
+                        <li><strong>Prototype-based</strong>: Kế thừa dựa trên prototype thay vì class</li>
+                    </ul>
+                </section>
+
+                <section class="post-section">
+                    <h2>Lịch sử phát triển</h2>
+                    <p>JavaScript được phát triển bởi Brendan Eich vào năm 1995 khi ông làm việc tại Netscape Communications. Ban đầu, nó được gọi là Mocha, sau đó đổi tên thành LiveScript và cuối cùng là JavaScript. Dù tên gọi có chữ "Java," JavaScript hoàn toàn không liên quan đến Java; việc đặt tên này nhằm mục đích tiếp thị.</p>
+                </section>
+
+                <section class="post-section">
+                    <h2>Vai trò trong Phát triển Web Hiện đại</h2>
+                    
+                    <h3>1. Frontend Development</h3>
+                    <div class="code-example">
+                        <h4>Modern JavaScript Example</h4>
+                        <pre><code class="language-javascript">const app = {
+    init() {
+        this.setupEventListeners();
+        this.loadData();
+    },
+
+    async loadData() {
+        try {
+            const response = await fetch('/api/data');
+            const data = await response.json();
+            this.renderUI(data);
+        } catch (error) {
+            console.error('Failed to load data:', error);
+        }
+    }
+};</code></pre>
+                    </div>
+
+                    <h3>2. Backend Development với Node.js</h3>
+                    <div class="code-example">
+                        <h4>Simple Express Server</h4>
+                        <pre><code class="language-javascript">const express = require('express');
+const app = express();
+
+app.get('/api/data', (req, res) => {
+    res.json({
+        status: 'success',
+        data: { message: 'Hello from Node.js!' }
+    });
+});</code></pre>
+                    </div>
+                </section>
+
+                <section class="post-section">
+                    <h2>Công nghệ và Framework Phổ biến</h2>
+                    
+                    <div class="framework-grid">
+                        <div class="framework-item">
+                            <h4>React</h4>
+                            <p>Virtual DOM, Component-based</p>
+                        </div>
+                        <div class="framework-item">
+                            <h4>Vue.js</h4>
+                            <p>Progressive framework</p>
+                        </div>
+                        <div class="framework-item">
+                            <h4>Angular</h4>
+                            <p>Full-featured framework</p>
+                        </div>
+                        <div class="framework-item">
+                            <h4>Svelte</h4>
+                            <p>Compile-time framework</p>
+                        </div>
+                    </div>
+
+                    <h3>Backend Technologies</h3>
+                    <ul>
+                        <li>Node.js: Runtime environment</li>
+                        <li>Express: Web framework</li>
+                        <li>Deno: Modern runtime</li>
+                        <li>Next.js: Full-stack framework</li>
+                    </ul>
+                </section>
+
+                <section class="post-section">
+                    <h2>Xu hướng JavaScript 2024</h2>
+                    <ol>
+                        <li>Web Components</li>
+                        <li>Serverless Architecture</li>
+                        <li>Edge Computing</li>
+                        <li>WebAssembly Integration</li>
+                    </ol>
+                </section>
+
+                <section class="post-section">
+                    <h2>Code Examples</h2>
+                    <div class="code-example">
+                        <h4>Modern ES6+ Features</h4>
+                        <pre><code class="language-javascript">// Destructuring
+const { name, age } = user;
+
+// Spread operator
+const newArray = [...oldArray, newItem];
+
+// Optional chaining
+const value = object?.property?.field;
+
+// Nullish coalescing
+const result = value ?? defaultValue;</code></pre>
+                    </div>
+                </section>
+
+                <section class="post-section">
+                    <h2>Tài nguyên học tập</h2>
+                    <div class="resource-list">
+                        <h3>Documentation</h3>
+                        <ul>
+                            <li><a href="https://developer.mozilla.org" target="_blank">MDN Web Docs</a></li>
+                            <li><a href="https://javascript.info" target="_blank">JavaScript.info</a></li>
+                        </ul>
+
+                        <h3>Online Courses</h3>
+                        <ul>
+                            <li>freeCodeCamp</li>
+                            <li>Codecademy</li>
+                            <li>Frontend Masters</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="post-section">
+                    <h2>Kết luận</h2>
+                    <p>JavaScript tiếp tục phát triển và mở rộng khả năng của nó. Việc nắm vững JavaScript không chỉ giúp bạn xây dựng các ứng dụng web tuyệt vời mà còn mở ra nhiều cơ hội trong lĩnh vực phát triển phần mềm hiện đại.</p>
+                </section>
+            </div>
+
+            <div class="post-navigation">
+                <a href="../blog.html" class="prev-post">JavaScript</a>
+                <a href="javascript-oop.html" class="next-post">Bài tiếp theo: JavaScript OOP →</a>
+            </div>
+
+            <!-- Author Info Section -->
+            <div class="author-section">
+                <div class="author-card">
+                    <div class="author-info">
+                        <div class="author-image">
+                            <img src="../imgs/avt3.png" alt="Author">
+                        </div>
+                        <div class="author-details">
+                            <h4><a href="../about.html">Nguyễn Ngọc Cát Tường</a></h4>
+                            <p class="author-bio">Web Developer | Java & JavaScript Blog</p>
+                            <div class="social-links">
+                                <a href="https://github.com/nguyenngoccattuong" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://linkedin.com/in/cattuong04554" target="_blank">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="mailto:nguyenngoccattuong04554@gmail.com">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-java.min.js"></script>
+    <script src="../script.js"></script>
+</body>
+</html> 

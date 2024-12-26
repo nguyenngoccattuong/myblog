@@ -470,16 +470,26 @@ code[class*="language-"] {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.author-image:hover img {
+    transform: scale(1.1);  /* Zoom 110% khi hover */
 }
 
 .author-details {
     flex: 1;
 }
 
-.author-details h4 {
+.author-details h4 a {
     color: var(--color-6);
-    margin-bottom: 5px;
+    text-decoration: none;
+    transition: color 0.3s ease;
     font-size: 1.2rem;
+}
+
+.author-details h4 a:hover {
+    color: var(--color-4);
 }
 
 .author-bio {
@@ -494,12 +504,13 @@ code[class*="language-"] {
 }
 
 .social-links a {
-    color: var(--color-5);
+    color: var(--color-6);
+    margin: 0 10px;
     font-size: 1.2rem;
     transition: all 0.3s ease;
 }
 
 .social-links a:hover {
-    color: var(--color-6);
+    color: var(--color-4);
     transform: translateY(-2px);
 }

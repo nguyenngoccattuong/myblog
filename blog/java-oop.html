@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lập Trình Hướng Đối Tượng (OOP) Trong Java - CatmeoTech</title>
+    <title>Lập Trình Hướng Đối Tượng (OOP) Trong Java - CatmeoBlog</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../style.css" rel="stylesheet">
     <link href="blog-style.css" rel="stylesheet">
@@ -14,7 +14,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html">CatmeoTech</a>
+            <a class="navbar-brand" href="index.html">Portfolio</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -69,6 +69,10 @@
                     cung cấp cách tổ chức và quản lý mã hiệu quả hơn. Java là một ngôn ngữ lập trình hướng đối tượng phổ biến, 
                     giúp lập trình viên xây dựng các ứng dụng dễ bảo trì và mở rộng.
                 </p>
+                <figure class="blog-image">
+                    <img src="../imgs/oop.png" alt="Object-Oriented Programming - OOP">
+                    <figcaption>Object-Oriented Programming - OOP</figcaption>
+                </figure>
 
                 <section class="post-section">
                     <h2>Định nghĩa lập trình hướng đối tượng (OOP)</h2>
@@ -85,20 +89,51 @@
                     <h3>1. Class và Object</h3>
                     <p>Class (Lớp): Là khuôn mẫu (blueprint) định nghĩa các thuộc tính và hành vi của đối tượng.</p>
                     <p>Object (Đối tượng): Là một thể hiện cụ thể của class.</p>
-                    <pre><code class="language-java">class Animal {
-    String name;
-    void speak() {
-        System.out.println(name + " is speaking.");
+                    <pre><code class="language-java">
+// Class - Định nghĩa một bản thiết kế cho xe hơi
+class Car {
+    // Thuộc tính
+    String color;
+    String model;
+    int year;
+
+    // Hành vi
+    void drive() {
+        System.out.println("The car is driving...");
+    }
+
+    void stop() {
+        System.out.println("The car has stopped.");
     }
 }
 
+// Object - Tạo các thực thể từ class Car
 public class Main {
     public static void main(String[] args) {
-        Animal dog = new Animal();
-        dog.name = "Dog";
-        dog.speak();
+        // Tạo object đầu tiên
+        Car car1 = new Car();
+        car1.color = "Blue";
+        car1.model = "Sedan";
+        car1.year = 2020;
+
+        // Tạo object thứ hai
+        Car car2 = new Car();
+        car2.color = "Yellow";
+        car2.model = "Hatchback";
+        car2.year = 2018;
     }
 }</code></pre>
+                    <figure class="blog-image">
+                        <img src="../imgs/class_object.png" alt="Class and Object">
+                        <figcaption>Class and Object</figcaption>
+                    </figure>
+                    <p>Class: <code>Car</code> mô tả các thuộc tính <code>color</code>, <code>model</code>, <code>year</code> và các hành vi <code>drive()</code>, <code>stop()</code>.</p>
+                    <p>Objects:</p>
+                    <ul>
+                        <li><code>car1</code> là một xe hơi màu xanh, kiểu Sedan, sản xuất năm 2020.</li>
+                        <li><code>car2</code> là một xe hơi màu vàng, kiểu Hatchback, sản xuất năm 2018.</li>
+                    </ul>
+                    <p>Mỗi đối tượng (object) đều có đặc điểm riêng, nhưng chúng được tạo ra từ cùng một bản thiết kế (class).</p>
 
                     <h3>2. Encapsulation (Tính đóng gói)</h3>
                     <p>Bảo vệ dữ liệu bằng cách ẩn các chi tiết bên trong và chỉ cho phép truy cập thông qua các phương thức.</p>
@@ -143,7 +178,7 @@ class Dog extends Animal {
 }</code></pre>
 
                     <h3>5. Abstraction (Tính trừu tượng)</h3>
-                    <p>Ẩn đi các chi tiết phức tạp và chỉ hiển thị c��c tính năng quan trọng.</p>
+                    <p>Ẩn đi các chi tiết phức tạp và chỉ hiển thị các tính năng quan trọng.</p>
                     <pre><code class="language-java">abstract class Shape {
     abstract void draw();
 }
@@ -187,8 +222,8 @@ class Circle extends Shape {
         </article>
 
         <div class="post-navigation">
-            <a href="java-clean-code.html" class="prev-post">← Clean Code</a>
-            <a href="#" class="next-post">Bài sau →</a>
+            <a href="java-overview.html" class="prev-post">← Bài trước: Java Overview</a>
+            <a href="java-clean-code.html" class="next-post">Bài tiếp theo: Java Clean Code →</a>
         </div>
     </main>
 

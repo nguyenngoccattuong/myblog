@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tổng Quan Ngôn Ngữ Lập Trình JavaScript - CatmeoBlog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../style.css" rel="stylesheet">
+    <link href="blog-style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Portfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../resume.html">Resume</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="../blog.html">Blog</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="blog.html#java">Java Programming</a>
+                            <a class="dropdown-item" href="blog.html#javascript">JavaScript</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Floating Bubbles -->
+    <div class="floating-bubble bubble-1"></div>
+    <div class="floating-bubble bubble-2"></div>
+    <div class="floating-bubble bubble-3"></div>
+    <div class="floating-bubble bubble-4"></div>
+    <div class="floating-bubble bubble-5"></div>
+
+    <!-- <h1 class="page-title">Blog</h1> -->
+
+    <main class="blog-post">
+        <article>
+            <header class="post-header">
+                <div class="post-meta">
+                    <div>
+                        <span><i class="fas fa-calendar"></i> 26/12/2024</span>
+                    </div>
+                    <div>
+                        <span><i class="fas fa-tags"></i> JavaScript</span>
+                    </div>
+                </div>
+                <h1>Làm quen với ES6: Các tính năng hiện đại của JavaScript</h1>
+            </header>
+        
+            <div class="post-content">
+                <div class="post-intro">
+                    JavaScript là một trong những ngôn ngữ lập trình phổ biến nhất trên thế giới. ES6 (ECMAScript 2015) đã ra đời như một bước ngoặt lớn, mang đến một loạt cải tiến và công cụ mới cho các nhà phát triển.
+                </div>
+        
+                <section class="post-section">
+                    <h2>Tại sao ES6 là bước ngoặt lớn?</h2>
+                    <p>Trước ES6, việc viết mã JavaScript phức tạp thường đòi hỏi nhiều workaround và thư viện bổ trợ. ES6 đã thay đổi điều này bằng cách bổ sung những tính năng hiện đại, giúp mã ngắn gọn, dễ hiểu, và hiệu quả hơn.</p>
+                </section>
+        
+                <section class="post-section">
+                    <h2>Các tính năng nổi bật của ES6</h2>
+        
+                    <h3>1. Let và const</h3>
+                    <p>Trước ES6, JavaScript chỉ có từ khóa <code>var</code> để khai báo biến, dẫn đến nhiều vấn đề về phạm vi (scope) và khả năng dễ bị lỗi. ES6 giới thiệu <code>let</code> và <code>const</code>:</p>
+                    <ul></ul>
+                        <li><code>let</code>: Khai báo biến có phạm vi block, có thể thay đổi giá trị.</li>
+                        <li><code>const</code>: Khai báo biến có phạm vi block, không thể thay đổi giá trị.</li>
+                    </ul>
+                    <div class="code-example">
+                        <pre><code class="language-javascript">if (true) {
+            let x = 10;
+            const y = 20;
+            console.log(x, y); // Output: 10, 20
+        }
+        // console.log(x, y); // Lỗi: x và y không tồn tại ngoài block</code></pre>
+                    </div>
+        
+                    <h3>2. Arrow Functions</h3>
+                    <p>Arrow functions cung cấp cách viết hàm ngắn gọn hơn và tự động bind từ khóa <code>this</code>.</p>
+                    <div class="code-example">
+                        <pre><code class="language-javascript">// Hàm truyền thống
+        function add(a, b) {
+            return a + b;
+        }
+        
+        // Arrow function
+        const add = (a, b) => a + b;
+        
+        console.log(add(5, 10)); // Output: 15</code></pre>
+                    </div>
+        
+                    <h3>3. Template Literals</h3>
+                    <p>Template literals cho phép tạo chuỗi dễ dàng hơn với cú pháp sử dụng dấu backtick <code>()</code>. Bạn có thể nhúng biểu thức vào chuỗi bằng <code>${}</code>.
+
+                    </p>
+                    <div class="code-example">
+                        <pre><code class="language-javascript">const name = "John";
+        const age = 30;
+        
+        const message = `Hello, my name is ${name} and I am ${age} years old.`;
+        console.log(message);</code></pre>
+                    </div>
+        
+                    <h3>4. Destructuring</h3>
+                    <p>Destructuring giúp tách giá trị từ mảng hoặc đối tượng một cách dễ dàng.</p>
+                    <div class="code-example">
+                        <pre><code class="language-javascript">// Với mảng
+        const [a, b] = [1, 2];
+        console.log(a, b); // Output: 1, 2
+        
+        // Với đối tượng
+        const person = { name: "Alice", age: 25 };
+        const { name, age } = person;
+        console.log(name, age); // Output: Alice, 25</code></pre>
+                    </div>
+        
+                    <h3>5. Modules</h3>
+                    <p>ES6 cung cấp cú pháp native để export và import module.</p>
+                    <div class="code-example">
+                        <pre><code class="language-javascript">// file math.js
+        export const add = (a, b) => a + b;
+        export const subtract = (a, b) => a - b;
+        
+        // file main.js
+        import { add, subtract } from './math.js';
+        
+        console.log(add(10, 5)); // Output: 15
+        console.log(subtract(10, 5)); // Output: 5</code></pre>
+                    </div>
+                </section>
+        
+                <section class="post-section">
+                    <h2>Kết luận</h2>
+                    <p>ES6 đã thay đổi cách viết mã JavaScript, giúp nó trở nên hiện đại và mạnh mẽ hơn. Các tính năng như <code>let</code>, <code>const</code>, arrow functions, template literals, destructuring, và modules không chỉ làm cho mã ngắn gọn mà còn dễ bảo trì hơn.</p>
+                </section>
+            </div>
+        
+            <div class="post-navigation">
+                <a href="javascript-overview.html" class="prev-post">
+                    ←Bài trước: JavaScript Overview
+                </a>
+                <a href="javascript-eventLoop.html" class="next-post">
+                    Bài tiếp theo: JavaScript Event Loop →
+                </a>
+            </div>
+                    
+            <div class="author-section">
+                <div class="author-card">
+                    <div class="author-info">
+                        <div class="author-image">
+                            <img src="../imgs/avt3.png" alt="Author">
+                        </div>
+                        <div class="author-details">
+                            <h4><a href="../about.html">Nguyễn Ngọc Cát Tường</a></h4>
+                            <p class="author-bio">Web Developer | Java & JavaScript Blog</p>
+                            <div class="social-links">
+                                <a href="https://github.com/nguyenngoccattuong" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://linkedin.com/in/cattuong04554" target="_blank">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="mailto:nguyenngoccattuong04554@gmail.com">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-java.min.js"></script>
+    <script src="../script.js"></script>
+</body>
+</html> 

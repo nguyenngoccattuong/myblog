@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tổng Quan Ngôn Ngữ Lập Trình JavaScript - CatmeoBlog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../style.css" rel="stylesheet">
+    <link href="blog-style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Portfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../resume.html">Resume</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="../blog.html">Blog</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="blog.html#java">Java Programming</a>
+                            <a class="dropdown-item" href="blog.html#javascript">JavaScript</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Floating Bubbles -->
+    <div class="floating-bubble bubble-1"></div>
+    <div class="floating-bubble bubble-2"></div>
+    <div class="floating-bubble bubble-3"></div>
+    <div class="floating-bubble bubble-4"></div>
+    <div class="floating-bubble bubble-5"></div>
+
+    <!-- <h1 class="page-title">Blog</h1> -->
+
+    <main class="blog-post">
+        <article>
+            <header class="post-header">
+                <div class="post-meta">
+                    <div>
+                        <span><i class="fas fa-calendar"></i> 26/12/2024</span>
+                    </div>
+                    <div>
+                        <span><i class="fas fa-tags"></i> JavaScript</span>
+                    </div>
+                </div>
+                <h1>Event Loop và cách JavaScript xử lý bất đồng bộ</h1>
+            </header>
+        
+            <div class="post-content">
+                <div class="post-intro">
+                    <p>JavaScript là một ngôn ngữ lập trình chủ yếu được sử dụng cho các ứng dụng web. Mặc dù JavaScript là một ngôn ngữ đơn luồng (single-threaded), nó có thể xử lý nhiều tác vụ bất đồng bộ (asynchronous) cùng lúc, điều này thường gây khó hiểu đối với những người mới bắt đầu. Trong bài viết này, chúng ta sẽ tìm hiểu về cơ chế Event Loop trong JavaScript, cùng với các khái niệm như Call Stack, Web APIs và Task Queue, để giải thích tại sao JavaScript có thể làm được điều này.</p>
+                </div>
+        
+                <section class="post-section">
+                    <h2>1. Call Stack (Ngăn xếp lệnh)</h2>
+                    <p>Call Stack là nơi JavaScript quản lý các lời gọi hàm (function calls). Khi một hàm được gọi, JavaScript sẽ thêm nó vào Call Stack, và khi hàm hoàn thành, nó sẽ bị loại bỏ khỏi Call Stack. Do JavaScript chỉ có một Call Stack duy nhất, chỉ có thể thực thi một hàm tại một thời điểm.</p>
+                    
+                    <div class="code-example">
+                        <h4>Ví dụ về Call Stack</h4>
+                        <pre><code class="language-javascript">function sayHello() {
+            console.log("Hello!");
+        }
+        
+        sayHello();</code></pre>
+                    </div>
+                    <p>Trong ví dụ trên, hàm sayHello() sẽ được thêm vào Call Stack khi được gọi và sau khi in ra "Hello!", nó sẽ được loại bỏ khỏi Call Stack. Do JavaScript chỉ có một Call Stack duy nhất, chỉ có thể thực thi một hàm tại một thời điểm.</p>
+                </section>
+        
+                <section class="post-section">
+                    <h2>2. Web APIs</h2>
+                    <p>Web APIs là những hàm được cung cấp bởi trình duyệt hoặc môi trường Node.js mà JavaScript có thể gọi để thực hiện các tác vụ bất đồng bộ như xử lý thời gian (setTimeout), gửi yêu cầu HTTP (fetch), hoặc thao tác với DOM. Các API này được thực thi ngoài JavaScript Engine (cụ thể là Call Stack), và khi hoàn thành sẽ gửi callback vào Task Queue.
+                    </p>
+                    
+                    <div class="code-example">
+                        <h4>Ví dụ về Web APIs</h4>
+                        <pre><code class="language-javascript">setTimeout(function() {
+            console.log("This is delayed!");
+        }, 2000);</code></pre>
+                    </div>
+                    <p>Hàm setTimeout sẽ được gọi, nhưng thay vì thực thi ngay lập tức, nó sẽ được chuyển đến Web APIs và sau thời gian 2000ms, callback sẽ được đưa vào Task Queue.
+                    </p>
+                </section>
+        
+                <section class="post-section">
+                    <h2>3. Task Queue (Hàng đợi tác vụ)</h2>
+                    <p>Sau khi các tác vụ bất đồng bộ hoàn thành, callback của chúng sẽ được đưa vào Task Queue (hàng đợi tác vụ). Khi Call Stack trống, Event Loop sẽ chuyển các callback từ Task Queue vào Call Stack để thực thi.
+                    </p>
+                </section>
+
+                <section class="post-section">
+                    <h2>4. Event Loop</h2>
+                    <p>Event Loop là cơ chế giúp JavaScript có thể xử lý các tác vụ bất đồng bộ. Nó liên tục kiểm tra Call Stack để xem liệu nó có trống không. Nếu trống, nó sẽ chuyển các callback từ Task Queue vào Call Stack để thực thi. Điều này giúp JavaScript có thể xử lý nhiều tác vụ đồng thời, mặc dù chỉ có một thread.
+                    </p>
+                </section>
+                    
+                <section class="post-section">
+                    <h2>5. JavaScript là ngôn ngữ đơn luồng nhưng vẫn có thể xử lý bất đồng bộ</h2>
+                    <p>Mặc dù JavaScript chỉ có một luồng (single-threaded), cơ chế Event Loop giúp nó có thể xử lý nhiều tác vụ bất đồng bộ mà không cần đến nhiều luồng. Điều này có thể được hình dung như một người làm việc một mình nhưng biết cách tổ chức và xử lý nhiều công việc cùng một lúc mà không bị gián đoạn.</p>
+
+                    <p>Các tác vụ đồng bộ sẽ được thực thi ngay lập tức, trong khi các tác vụ bất đồng bộ như setTimeout, Promise, hoặc các yêu cầu HTTP sẽ được "hoãn" và thực thi sau khi Call Stack trống.</p>
+                </section>
+                <section class="post-section">
+                    <h2>6. Ví dụ minh họa</h2>
+                    
+                    <div class="code-example">
+                        <h4>Ví dụ về setTimeout</h4>
+                        <pre><code class="language-javascript">console.log("Start");
+
+setTimeout(() => {
+    console.log("Inside setTimeout");
+}, 2000);
+
+console.log("End");
+
+// Output:
+// Start
+// End
+// Inside setTimeout</code></pre>
+                        <ul class="code-explanation">
+                            <li><code>console.log("Start")</code> và <code>console.log("End")</code> được thực thi ngay lập tức vì đây là các lệnh đồng bộ.</li>
+                            <li><code>setTimeout</code> sẽ được đưa vào Web APIs, và sau 2000ms, callback của nó sẽ được chuyển vào Task Queue.</li>
+                            <li>Sau khi Call Stack trống, callback từ Task Queue sẽ được đưa vào Call Stack và thực thi.</li>   
+                        </ul>
+                    </div>
+
+                    <div class="code-example">
+                        <h4>Ví dụ về Promise</h4>
+                        <pre><code class="language-javascript">console.log("Start");
+
+Promise.resolve().then(() => {
+    console.log("Inside Promise");
+});
+
+console.log("End");
+
+// Output:
+// Start
+// End
+// Inside Promise</code></pre>
+                        <ul class="code-explanation">
+                            <li><code>console.log("Start")</code> và <code>console.log("End")</code> được thực thi ngay lập tức vì đây là các lệnh đồng bộ.</li>
+                            <li><code>Promise.resolve()</code> tạo ra một Promise đã được resolved và callback <code>.then()</code> của nó sẽ được đưa vào Microtask Queue.</li>
+                            <li>Sau khi Call Stack trống, callback từ Task Queue sẽ được đưa vào Call Stack và thực thi.</li>
+                        </ul>
+                    </div>
+
+                    <div class="code-example">
+                        <h4>Ví dụ async/await</h4>
+                        <pre><code class="language-javascript">async function fetchData() {
+    console.log("Fetching data...");
+    let data = await new Promise(resolve => 
+        setTimeout(() => resolve("Data fetched"), 2000)
+    );
+    console.log(data);
+}
+
+fetchData();
+
+// Output:
+// Fetching data...
+// Data fetched</code></pre>
+                        <ul class="code-explanation">
+                            <li><code></code>await</code> sẽ tạm dừng hàm <code>fetchData()</code> cho đến khi Promise được giải quyết.</li>
+                            <li>Các tác vụ đồng bộ trước <code>await</code> sẽ được thực hiện ngay lập tức.</li>
+                            <li>Phần code sau await sẽ được thực thi sau khi Promise hoàn thành.</li>
+                        </ul>
+                    </div>
+                </section>
+                <section class="post-section">
+                    <h2>5. Tóm tắt</h2>
+                    <div class="summary-box">
+                        <ul>
+                            <li><strong>Call Stack:</strong> Quản lý các hàm đồng bộ</li>
+                            <li><strong>Web APIs:</strong> Xử lý các tác vụ bất đồng bộ</li>
+                            <li><strong>Task Queue:</strong> Lưu trữ callbacks chờ xử lý</li>
+                            <li><strong>Event Loop:</strong> Điều phối quá trình xử lý</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        
+            <div class="post-navigation">
+                <a href="javascript-es6.html" class="prev-post">
+                     ←Bài trước: JavaScript Es6
+                </a>
+                <a href="javascript-async-await.html" class="next-post">
+                    Bài tiếp theo: JavaScript Async/Await →
+                </a>
+            </div>     
+            <div class="author-section">
+                <div class="author-card">
+                    <div class="author-info">
+                        <div class="author-image">
+                            <img src="../imgs/avt3.png" alt="Author">
+                        </div>
+                        <div class="author-details">
+                            <h4><a href="../about.html">Nguyễn Ngọc Cát Tường</a></h4>
+                            <p class="author-bio">Web Developer | Java & JavaScript Blog</p>
+                            <div class="social-links">
+                                <a href="https://github.com/nguyenngoccattuong" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://linkedin.com/in/cattuong04554" target="_blank">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="mailto:nguyenngoccattuong04554@gmail.com">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-java.min.js"></script>
+    <script src="../script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tổng Quan Ngôn Ngữ Lập Trình JavaScript - CatmeoBlog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../style.css" rel="stylesheet">
+    <link href="blog-style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Portfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../resume.html">Resume</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="../blog.html">Blog</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="blog.html#java">Java Programming</a>
+                            <a class="dropdown-item" href="blog.html#javascript">JavaScript</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Floating Bubbles -->
+    <div class="floating-bubble bubble-1"></div>
+    <div class="floating-bubble bubble-2"></div>
+    <div class="floating-bubble bubble-3"></div>
+    <div class="floating-bubble bubble-4"></div>
+    <div class="floating-bubble bubble-5"></div>
+
+    <!-- <h1 class="page-title">Blog</h1> -->
+
+    <main class="blog-post">
+        <article>
+            <header class="post-header">
+                <div class="post-meta">
+                    <div>
+                        <span><i class="fas fa-calendar"></i>26/12/2024</span>
+                    </div>
+                    <div>
+                        <span><i class="fas fa-tags"></i> JavaScript</span>
+                    </div>
+                </div>
+                <h1>Async/Await và cách xử lý bất đồng bộ trong JavaScript</h1>
+            </header>
+        
+            <div class="post-content">
+                <div class="post-intro">
+                    <p>Trong JavaScript, việc xử lý các tác vụ bất đồng bộ là một phần quan trọng để xây dựng các ứng dụng hiện đại. Bài viết này sẽ giúp bạn hiểu rõ khái niệm, các công cụ phổ biến như Promise và async/await, và cách áp dụng chúng hiệu quả.</p>
+                </div>
+        
+                <section class="post-section">
+                    <h2>Lập trình bất đồng bộ là gì?</h2>
+                    <p>Lập trình bất đồng bộ cho phép các tác vụ chạy đồng thời mà không chặn luồng thực thi chính. Điều này rất hữu ích khi làm việc với các tác vụ tốn thời gian như:</p>
+                    <ul>
+                        <li>Gọi API để lấy dữ liệu</li>
+                        <li>Đọc/ghi tệp từ hệ thống</li>
+                        <li>Tương tác với cơ sở dữ liệu</li>
+                    </ul>
+                    <p>Tuy nhiên, trước khi <code>Promise</code> và <code>async/await</code> xuất hiện, việc xử lý bất đồng bộ chủ yếu dựa vào callback, dẫn đến vấn đề "callback hell."</p>
+                </section>
+        
+                <section class="post-section">
+                    <h2>Callback và vấn đề thường gặp</h2>
+                    <p>Callback là hàm được truyền dưới dạng đối số và được gọi khi tác vụ bất đồng bộ hoàn thành. Tuy nhiên, việc lồng nhiều callback khiến mã khó đọc và bảo trì.</p>
+                    
+                    <div class="code-example">
+                        <h4>Callback Example</h4>
+                        <pre><code class="language-javascript">function fetchData(callback) {
+          setTimeout(() => {
+            callback("Data fetched");
+          }, 1000);
+        }
+        
+        fetchData((result) => {
+          console.log(result);
+        });</code></pre>
+                    </div>
+        
+                    <div class="code-example">
+                        <h4>Callback Hell Example</h4>
+                        <pre><code class="language-javascript">fetchData((data1) => {
+          processData(data1, (data2) => {
+            saveData(data2, (result) => {
+              console.log(result);
+            });
+          });
+        });</code></pre>
+                    </div>
+                </section>
+        
+                <section class="post-section">
+                    <h2>Giải pháp: Promise và async/await</h2>
+                    
+                    <h3>Promise</h3>
+                    <p>Promise giúp xử lý bất đồng bộ rõ ràng hơn với ba trạng thái:</p>
+                    <ul></ul>
+                        <li><strong>Pending:</strong> Trạng thái ban đầu của Promise.</li>
+                        <li><strong>Fulfilled:</strong> Trạng thái khi Promise hoàn thành thành công.</li>
+                        <li><strong>Rejected:</strong> Trạng thái khi Promise bị từ chối.</li>
+                    </ul>
+                    
+                    <div class="code-example">
+                        <pre><code class="language-javascript">const fetchData = new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve("Data fetched");
+          }, 1000);
+        });
+        
+        fetchData
+          .then((result) => console.log(result))
+          .catch((error) => console.error(error));</code></pre>
+                    </div>
+        
+                    <h3>Async/Await</h3>
+                    <p>Async/Await là cú pháp dựa trên Promise, nhưng đơn giản và dễ đọc hơn.</p>
+                    
+                    <div class="code-example">
+                        <pre><code class="language-javascript">async function fetchData() {
+          try {
+            const result = await new Promise((resolve, reject) => {
+              setTimeout(() => {
+                resolve("Data fetched");
+              }, 1000);
+            });
+            console.log(result);
+          } catch (error) {
+            console.error(error);
+          }
+        }
+        
+        fetchData();</code></pre>
+                    </div>
+                </section>
+        
+                <section class="post-section">
+                    <h2>So sánh giữa Callback, Promise, và Async/Await</h2>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Đặc điểm</th>
+                                <th>Callback</th>
+                                <th>Promise</th>
+                                <th>Async/Await</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Dễ đọc mã</td>
+                                <td>Khó (callback hell)</td>
+                                <td>Tốt hơn</td>
+                                <td>Rất dễ đọc</td>
+                            </tr>
+                            <tr>
+                                <td>Xử lý lỗi</td>
+                                <td>Phức tạp</td>
+                                <td>Dùng .catch()</td>
+                                <td>Dùng try/catch</td>
+                            </tr>
+                            <tr>
+                                <td>Khả năng mở rộng</td>
+                                <td>Hạn chế</td>
+                                <td>Tốt</td>
+                                <td>Tốt</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+        
+                <section class="post-section">
+                    <h2>Kết luận</h2>
+                    <p><code>Promise</code> và <code>async/await</code> là các công cụ mạnh mẽ giúp xử lý bất đồng bộ trong JavaScript dễ dàng hơn. Trong đó, <code>async/await</code> được khuyến khích sử dụng vì sự rõ ràng và dễ đọc. Hiểu rõ các khái niệm này sẽ giúp bạn phát triển các ứng dụng JavaScript hiệu quả hơn.</p>
+                </section>
+            </div>
+    
+            <div class="post-navigation">
+                <a href="javascript-eventLoop.html" class="prev-post">
+                     ← Bài trước: JavaScript Event Loop
+                </a>
+                <a href="javascript-eventLoop.html" class="next-post">
+                    Bài tiếp theo: JavaScript Event Loop →
+                </a>
+            </div>
+                 
+            <div class="author-section">
+                <div class="author-card">
+                    <div class="author-info">
+                        <div class="author-image">
+                            <img src="../imgs/avt3.png" alt="Author">
+                        </div>
+                        <div class="author-details">
+                            <h4><a href="../about.html">Nguyễn Ngọc Cát Tường</a></h4>
+                            <p class="author-bio">Web Developer | Java & JavaScript Blog</p>
+                            <div class="social-links">
+                                <a href="https://github.com/nguyenngoccattuong" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://linkedin.com/in/cattuong04554" target="_blank">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="mailto:nguyenngoccattuong04554@gmail.com">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+        </article>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-java.min.js"></script>
+    <script src="../script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tổng Quan Ngôn Ngữ Lập Trình JavaScript - CatmeoBlog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../style.css" rel="stylesheet">
+    <link href="blog-style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Portfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../resume.html">Resume</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="../blog.html">Blog</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="blog.html#java">Java Programming</a>
+                            <a class="dropdown-item" href="blog.html#javascript">JavaScript</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Floating Bubbles -->
+    <div class="floating-bubble bubble-1"></div>
+    <div class="floating-bubble bubble-2"></div>
+    <div class="floating-bubble bubble-3"></div>
+    <div class="floating-bubble bubble-4"></div>
+    <div class="floating-bubble bubble-5"></div>
+
+    <!-- <h1 class="page-title">Blog</h1> -->
+
+    <main class="blog-post">
+        <article>
+            <header class="post-header">
+                <div class="post-meta">
+                    <div>
+                        <span><i class="fas fa-calendar"></i> 29/12/2024</span>
+                    </div>
+                    <div>
+                        <span><i class="fas fa-tags"></i> JavaScript</span>
+                    </div>
+                </div>
+                <h1>DOM Manipulation hiệu quả: Lời khuyên và thủ thuật</h1>
+            </header>
+        
+            <div class="post-content">
+                <div class="post-intro">
+                    <p>Khi làm việc với JavaScript, việc thao tác với DOM (Document Object Model) là một trong những nhiệm vụ phổ biến nhất. Trong bài viết này, chúng ta sẽ tìm hiểu các cách truy cập và thay đổi DOM hiệu quả.</p>
+                </div>
+        
+                <section class="post-section">
+                    <h2>1. Cách truy cập và thay đổi DOM hiệu quả</h2>
+                    
+                    <h3>Truy cập DOM</h3>
+                    <div class="code-example">
+                        <h4>Truy cập bằng ID</h4>
+                        <pre><code class="language-javascript">let element = document.getElementById('myElement');</code></pre>
+                        <ul class="code-explanation">
+                            <li><code>document.getElementById()</code> là một trong những cách truy cập nhanh nhất vì trình duyệt tối ưu hóa việc tìm kiếm theo ID.</li>
+                            <li>Nếu bạn biết chính xác ID của phần tử, sử dụng phương thức này sẽ nhanh hơn các phương thức khác như <code>querySelector()</code>..</li>
+                        </ul>
+                    </div>
+        
+                    <div class="code-example">
+                        <h4>Truy cập bằng class hoặc tag name</h4>
+                        <pre><code class="language-javascript">let elements = document.getElementsByClassName('myClass');
+        Array.from(elements).forEach((element) => {
+            console.log(element);
+        });</code></pre>
+                        <ul class="code-explanation">
+                            <li>Nếu bạn cần thao tác với nhiều phần tử cùng lúc, hãy sử dụng <code>document.getElementsByClassName()</code> hoặc <code>document.getElementsByTagName()</code> để lấy một danh sách phần tử.</li>
+                            <li>Tuy nhiên, lưu ý rằng các phương thức này trả về HTMLCollection, không phải NodeList, do đó bạn sẽ cần chuyển đổi nếu muốn sử dụng các phương thức như <code>forEach()</code>.</li>
+                        </ul>
+                    </div>
+
+                    <div class="code-example">
+                        <h4>Truy cập với querySelector</h4>
+                        <pre><code class="language-javascript">let element = document.querySelector('.myClass');</code></pre>
+                        <ul class="code-explanation">
+                            <li>Phương thức <code>querySelector()</code> và <code>querySelectorAll()</code> cung cấp một cách tiếp cận linh hoạt hơn để truy cập các phần tử thông qua CSS selectors.</li>
+                            <li>Tuy nhiên, chúng có thể chậm hơn một chút so với <code>getElementById()</code> khi bạn làm việc với ID vì phải xử lý nhiều loại selector khác nhau.</li>
+                        </ul>
+                    </div>
+
+                    <h3>Thay đổi DOM</h3>
+                    <div class="code-example">
+                        <h4>Thêm hoặc sửa nội dung của phần tử</h4>
+                        <pre><code class="language-javascript">element.textContent = "New content here!";</code></pre>
+                        <ul class="code-explanation">
+                            <li>Thay vì sử dụng innerHTML, hãy sử dụng <code>textContent</code> hoặc <code>innerText</code> khi bạn chỉ cần thay đổi văn bản của phần tử.</li>
+                            <li><code>innerHTML</code> sẽ thực thi mã HTML, có thể gây nguy hiểm nếu dữ liệu không được xác minh.</li>
+                        </ul>
+                    </div>
+        
+                    <div class="code-example">
+                        <h4>Thêm hoặc sửa thuộc tính</h4>
+                        <pre><code class="language-javascript">element.setAttribute('src', 'new-image.jpg');
+                        </code></pre>
+                        <ul class="code-explanation">
+                            <li>Sử dụng <code>setAttribute()</code> hoặc các thuộc tính trực tiếp của phần tử để thay đổi thuộc tính.</li>
+                            <li>Điều này giúp dễ dàng chỉnh sửa thuộc tính như <code>src</code>, <code>href</code>, <code>alt</code>, vv...</code>.</li>
+                        </ul>
+                    </div>
+
+                    <div class="code-example">
+                        <h4>Thêm phần tử mới</h4>
+                        <pre><code class="language-javascript">let newElement = document.createElement('div');
+newElement.textContent = 'New element';
+parentElement.appendChild(newElement);</code></pre>
+                        <ul class="code-explanation">
+                            <li>Sử dụng <code>appendChild()</code> hoặc <code>insertBefore()</code> để thêm phần tử vào DOM mà không phải tái tạo lại toàn bộ cấu trúc.</li>
+                        </ul>
+                    </div>
+                    
+                </section>
+        
+                <section class="post-section">
+                    <h2>2. So sánh giữa Vanilla JavaScript và jQuery</h2>
+                    
+                    <div class="comparison-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Tiêu chí</th>
+                                    <th>Vanilla JavaScript</th>
+                                    <th>jQuery</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Hiệu suất</td>
+                                    <td>Cao hơn, không có overhead</td>
+                                    <td>Có thể chậm hơn do overhead</td>
+                                </tr>
+                                <tr>
+                                    <td>Cú pháp</td>
+                                    <td>Chi tiết hơn</td>
+                                    <td>Ngắn gọn, dễ đọc</td>
+                                </tr>
+                                <tr>
+                                    <td>Browser Support</td>
+                                    <td>Phụ thuộc vào tính năng</td>
+                                    <td>Tương thích tốt</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+        
+                <section class="post-section">
+                    <h2>3. Các tối ưu hiệu suất</h2>
+                    
+                    <div class="code-example">
+                        <h4>Sử dụng DocumentFragment</h4>
+                        <pre><code class="language-javascript">let fragment = document.createDocumentFragment();
+        fragment.appendChild(child1);
+        fragment.appendChild(child2);
+        parentElement.appendChild(fragment);</code></pre>
+                        <ul class="code-explanation">
+                            <li>Giảm số lần thao tác với DOM</li>
+                            <li>Cải thiện hiệu suất khi thêm nhiều phần tử</li>
+                        </ul>
+                    </div>
+
+                    <div class="code-example">
+                        <h4>Sử dụng <code>requestAnimationFrame()</code></h4>
+                        <ul class="code-explanation">
+                            <li>Khi bạn cần thực hiện các thay đổi liên quan đến animation, <code>requestAnimationFrame()</code> giúp đồng bộ hóa các thao tác và cải thiện hiệu suất.</li>
+                        </ul>
+                    </div>
+
+                    <div class="code-example">
+                        <h4>Tránh sử dụng innerHTML khi không cần thiết</h4>
+                        <ul class="code-explanation">
+                            <li>innerHTML có thể làm cho trình duyệt phải tái tạo lại DOM, điều này gây ra sự giảm hiệu suất.</li>
+                            <li>Hãy sử dụng <code>textContent</code> hoặc <code>innerText</code> thay cho trường hợp chỉ cần thay đổi văn bản.</li>
+                        </ul>
+                    </div>
+        
+                    <div class="code-example">
+                        <h4>Debouncing Example</h4>
+                        <pre><code class="language-javascript">function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }</code></pre>
+                        <ul class="code-explanation">
+                            <li>Giảm số lần gọi hàm trong các sự kiện liên tục</li>
+                            <li>Cải thiện hiệu suất cho các sự kiện như scroll, resize</li>
+                        </ul>
+                    </div>
+
+                </section>
+        
+                <section class="post-section">
+                    <h2>Kết luận</h2>
+                    <p>Việc thao tác DOM hiệu quả không chỉ giúp cải thiện hiệu suất mà còn làm cho ứng dụng của bạn trở nên mượt mà và dễ dàng bảo trì hơn. Hãy luôn nhớ tối ưu hóa cách bạn thao tác với DOM để đảm bảo rằng ứng dụng của bạn hoạt động nhanh và hiệu quả nhất có thể.</p>
+                </section>
+            </div>
+        
+            <div class="post-navigation">
+                <a href="javascript-async-await.html" class="prev-post">
+                     ← Bài trước: JavaScript Async/Await
+                </a>
+                <a href="../blog.html class="next-post">
+                    JavaScript
+                </a>
+            </div>
+
+            <div class="author-section">
+                <div class="author-card">
+                    <div class="author-info">
+                        <div class="author-image">
+                            <img src="../imgs/avt3.png" alt="Author">
+                        </div>
+                        <div class="author-details">
+                            <h4><a href="../about.html">Nguyễn Ngọc Cát Tường</a></h4>
+                            <p class="author-bio">Web Developer | Java & JavaScript Blog</p>
+                            <div class="social-links">
+                                <a href="https://github.com/nguyenngoccattuong" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://linkedin.com/in/cattuong04554" target="_blank">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="mailto:nguyenngoccattuong04554@gmail.com">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-java.min.js"></script>
+    <script src="../script.js"></script>
+</body>
+</html> 

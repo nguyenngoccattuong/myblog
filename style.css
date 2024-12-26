@@ -203,7 +203,23 @@ body {
 .hero-content h1 {
     font-size: 4.5rem;
     color: var(--color-6);
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease forwards;
+}
+
+.hero-content .name {
+    font-size: 3.5rem;
+    color: var(--color-5);
+    margin-bottom: 25px;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease forwards 0.3s;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .hero-content .lead {
@@ -211,6 +227,10 @@ body {
     color: var(--text-dark);
     margin-bottom: 30px;
     opacity: 0.8;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease forwards 0.6s;
+    line-height: 1.6;
 }
 
 .btn-primary {
@@ -746,7 +766,7 @@ body {
 }
 
 .timeline-content h3 {
-    color: var(--text-dark);
+    color: var(--color-6);
     font-size: 1.2rem;
     margin-bottom: 5px;
 }
@@ -1306,12 +1326,6 @@ body {
     font-weight: 600;
     font-size: 0.9rem;
     margin-bottom: 8px;
-}
-
-.timeline-content h3 {
-    color: var(--text-dark);
-    font-size: 1.2rem;
-    margin-bottom: 5px;
 }
 
 .position {
@@ -2294,5 +2308,116 @@ body {
         height: 220px;
     }
 }
- 
- 
+
+.profile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.profile-name {
+    font-size: 2.5rem;
+    color: var(--color-5);
+    /* margin-top: 20px; */
+    font-weight: 500;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease forwards 0.5s;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Điều chỉnh lại các style khác */
+.hero-content h1 {
+    font-size: 4.5rem;
+    color: var(--color-6);
+    margin-bottom: 25px;
+}
+
+.hero-content .lead {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    opacity: 0.8;
+}
+
+/* Interest Tags */
+.interest-tag {
+    display: inline-block;
+    padding: 8px 15px;
+    margin: 5px;
+    background: rgba(211, 162, 157, 0.1);
+    color: var(--color-5);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.interest-tag:hover {
+    background: rgba(211, 162, 157, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Project Tech Tags */
+.project-tech {
+    margin: 10px 0;
+}
+
+.tech-tag {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 3px;
+    background: rgba(163, 99, 97, 0.1);
+    color: var(--color-6);
+    border-radius: 15px;
+    font-size: 0.9rem;
+}
+
+/* Style cho tất cả h3 trong resume */
+.resume-section h3 {
+    color: var(--color-6);
+    font-weight: 600;
+    margin-bottom: 8px;
+    transition: color 0.3s ease;
+}
+
+.project-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #9EABA2;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.project-links a:hover {
+    color: #BDD1C5;
+    transform: translateX(5px);
+}
+
+.project-links i {
+    font-size: 1.1rem;
+}
+
+.feature-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 15px 0;
+}
+
+.feature-list li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 8px;
+    line-height: 1.6;
+    color: var(--text-dark);
+}
+
+.feature-list li::before {
+    content: "•";
+    position: absolute;
+    left: 8px;
+    color: var(--color-5);
+}

@@ -1309,13 +1309,34 @@ body {
     overflow: hidden;
     background: white;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border: 2px solid var(--color-5);
+    padding: 8px;
+    transition: all 0.3s ease;
 }
 
 .company-logo img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    padding: 8px;
+    transition: transform 0.3s ease;
+}
+
+.company-logo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(211, 162, 157, 0.2);
+    border-color: var(--color-6);
+}
+
+.company-logo:hover img {
+    transform: scale(1.05);
+}
+
+@media (max-width: 576px) {
+    .company-logo {
+        width: 60px;
+        height: 60px;
+        padding: 6px;
+    }
 }
 
 /* Timeline adjustments */
@@ -2406,6 +2427,58 @@ body {
     font-size: 1.1rem;
 }
 
+.project-logo {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border: 2px solid var(--color-5);
+    padding: 8px;
+    transition: all 0.3s ease;
+    margin-left: auto; /* Đẩy logo sang phải */
+}
+
+.project-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.project-logo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(211, 162, 157, 0.2);
+    border-color: var(--color-6);
+}
+
+.project-logo:hover img {
+    transform: scale(1.05);
+}
+
+
+.project-info{
+    display: flex;
+    gap:20px;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+@media (max-width: 576px) {
+    .project-info {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .project-logo {
+        width: 60px;
+        height: 60px;
+        padding: 6px;
+        margin-left: 0; /* Reset margin trên mobile */
+    }
+}
+
 .feature-list {
     list-style: none;
     padding-left: 0;
@@ -2425,4 +2498,85 @@ body {
     position: absolute;
     left: 8px;
     color: var(--color-5);
+}
+
+.info-section {
+    margin: 1.5rem 0;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.info-section h4 {
+    color: var(--color-6);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.info-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.info-list-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 8px;
+    border-radius: 6px;
+    position: relative;
+}
+
+.info-list-item[onclick] {
+    cursor: pointer;
+}
+
+.info-list-item[onclick]:hover {
+    background-color: var(--color-2);
+}
+
+.info-icon {
+    width: 35px;
+    height: 35px;
+    background-color: var(--color-2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-icon i {
+    font-size: 16px;
+    color: var(--color-6);
+}
+
+.info-list-item span {
+    flex: 1;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.copy-hint {
+    position: absolute;
+    right: 10px;
+    color: var(--color-6);
+    font-size: 0.8rem;
+    opacity: 0;
+}
+
+.info-list-item[onclick]:hover .copy-hint {
+    opacity: 0.8;
+}
+
+.copied {
+    animation: copiedAnimation 1s ease;
+}
+
+@keyframes copiedAnimation {
+    0% { background-color: var(--color-2); }
+    50% { background-color: var(--color-3); }
+    100% { background-color: var(--color-2); }
 }

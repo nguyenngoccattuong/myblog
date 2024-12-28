@@ -31,10 +31,7 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="../blog.html">Blog</a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="blog.html#java">Java Programming</a>
-                            <a class="dropdown-item" href="blog.html#javascript">JavaScript</a>
-                        </div>
+                        
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../contact.html">Contact</a>
@@ -71,6 +68,11 @@
                 <div class="post-intro">
                     <p>JavaScript là một ngôn ngữ lập trình chủ yếu được sử dụng cho các ứng dụng web. Mặc dù JavaScript là một ngôn ngữ đơn luồng (single-threaded), nó có thể xử lý nhiều tác vụ bất đồng bộ (asynchronous) cùng lúc, điều này thường gây khó hiểu đối với những người mới bắt đầu. Trong bài viết này, chúng ta sẽ tìm hiểu về cơ chế Event Loop trong JavaScript, cùng với các khái niệm như Call Stack, Web APIs và Task Queue, để giải thích tại sao JavaScript có thể làm được điều này.</p>
                 </div>
+
+                <figure class="blog-image">
+                    <img src="../imgs/js_evenloop.png" alt="JavaScript Event Loop">
+                    <figcaption>JavaScript Event Loop</figcaption>
+                </figure>
         
                 <section class="post-section">
                     <h2>1. Call Stack (Ngăn xếp lệnh)</h2>
@@ -78,11 +80,12 @@
                     
                     <div class="code-example">
                         <h4>Ví dụ về Call Stack</h4>
-                        <pre><code class="language-javascript">function sayHello() {
-            console.log("Hello!");
-        }
-        
-        sayHello();</code></pre>
+                        <pre><code class="language-javascript">
+function sayHello() {
+    console.log("Hello!");
+}
+
+sayHello();</code></pre>
                     </div>
                     <p>Trong ví dụ trên, hàm sayHello() sẽ được thêm vào Call Stack khi được gọi và sau khi in ra "Hello!", nó sẽ được loại bỏ khỏi Call Stack. Do JavaScript chỉ có một Call Stack duy nhất, chỉ có thể thực thi một hàm tại một thời điểm.</p>
                 </section>
@@ -94,9 +97,10 @@
                     
                     <div class="code-example">
                         <h4>Ví dụ về Web APIs</h4>
-                        <pre><code class="language-javascript">setTimeout(function() {
-            console.log("This is delayed!");
-        }, 2000);</code></pre>
+                        <pre><code class="language-javascript">
+setTimeout(function() {
+    console.log("This is delayed!");
+}, 2000);</code></pre>
                     </div>
                     <p>Hàm setTimeout sẽ được gọi, nhưng thay vì thực thi ngay lập tức, nó sẽ được chuyển đến Web APIs và sau thời gian 2000ms, callback sẽ được đưa vào Task Queue.
                     </p>
@@ -125,7 +129,8 @@
                     
                     <div class="code-example">
                         <h4>Ví dụ về setTimeout</h4>
-                        <pre><code class="language-javascript">console.log("Start");
+                        <pre><code class="language-javascript">
+console.log("Start");
 
 setTimeout(() => {
     console.log("Inside setTimeout");
@@ -189,6 +194,10 @@ fetchData();
                 </section>
                 <section class="post-section">
                     <h2>5. Tóm tắt</h2>
+                    <figure class="blog-image">
+                        <img src="../imgs/js-runtime.png" alt="JavaScript Runtime">
+                        <figcaption>JavaScript Runtime</figcaption>
+                    </figure>
                     <div class="summary-box">
                         <ul>
                             <li><strong>Call Stack:</strong> Quản lý các hàm đồng bộ</li>

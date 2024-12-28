@@ -31,10 +31,7 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="../blog.html">Blog</a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="blog.html#java">Java Programming</a>
-                            <a class="dropdown-item" href="blog.html#javascript">JavaScript</a>
-                        </div>
+                       
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../contact.html">Contact</a>
@@ -71,7 +68,10 @@
                 <div class="post-intro">
                     <p>Trong JavaScript, việc xử lý các tác vụ bất đồng bộ là một phần quan trọng để xây dựng các ứng dụng hiện đại. Bài viết này sẽ giúp bạn hiểu rõ khái niệm, các công cụ phổ biến như Promise và async/await, và cách áp dụng chúng hiệu quả.</p>
                 </div>
-        
+                <figure class="blog-image">
+                    <img src="../imgs/js-async-await.png" alt="JavaScript Async/Await">
+                    <figcaption>JavaScript Async/Await</figcaption>
+                </figure>
                 <section class="post-section">
                     <h2>Lập trình bất đồng bộ là gì?</h2>
                     <p>Lập trình bất đồng bộ cho phép các tác vụ chạy đồng thời mà không chặn luồng thực thi chính. Điều này rất hữu ích khi làm việc với các tác vụ tốn thời gian như:</p>
@@ -89,26 +89,28 @@
                     
                     <div class="code-example">
                         <h4>Callback Example</h4>
-                        <pre><code class="language-javascript">function fetchData(callback) {
-          setTimeout(() => {
-            callback("Data fetched");
-          }, 1000);
-        }
-        
-        fetchData((result) => {
-          console.log(result);
-        });</code></pre>
+                        <pre><code class="language-javascript">
+function fetchData(callback) {
+    setTimeout(() => {
+    callback("Data fetched");
+    }, 1000);
+}
+
+fetchData((result) => {
+    console.log(result);
+});</code></pre>
                     </div>
         
                     <div class="code-example">
                         <h4>Callback Hell Example</h4>
-                        <pre><code class="language-javascript">fetchData((data1) => {
-          processData(data1, (data2) => {
-            saveData(data2, (result) => {
-              console.log(result);
-            });
-          });
-        });</code></pre>
+                        <pre><code class="language-javascript">
+fetchData((data1) => {
+    processData(data1, (data2) => {
+    saveData(data2, (result) => {
+        console.log(result);
+    });
+    });
+});</code></pre>
                     </div>
                 </section>
         
@@ -124,35 +126,122 @@
                     </ul>
                     
                     <div class="code-example">
-                        <pre><code class="language-javascript">const fetchData = new Promise((resolve, reject) => {
-          setTimeout(() => {
-            resolve("Data fetched");
-          }, 1000);
-        });
-        
-        fetchData
-          .then((result) => console.log(result))
-          .catch((error) => console.error(error));</code></pre>
+                        <pre><code class="language-javascript">
+const fetchData = new Promise((resolve, reject) => {
+    setTimeout(() => {
+    resolve("Data fetched");
+    }, 1000);
+});
+
+fetchData
+    .then((result) => console.log(result))
+    .catch((error) => console.error(error));</code></pre>
                     </div>
         
                     <h3>Async/Await</h3>
-                    <p>Async/Await là cú pháp dựa trên Promise, nhưng đơn giản và dễ đọc hơn.</p>
+                    <p>Async/Await là cú pháp dựa trên Promise, nhưng đơn giản và dễ đọc hơn. Nó giúp code bất đồng bộ trông giống như code đồng bộ, dễ hiểu và dễ debug hơn.</p>
                     
                     <div class="code-example">
+                        <h4>Cơ bản về Async/Await</h4>
                         <pre><code class="language-javascript">async function fetchData() {
-          try {
-            const result = await new Promise((resolve, reject) => {
-              setTimeout(() => {
+    try {
+        const result = await new Promise((resolve, reject) => {
+            setTimeout(() => {
                 resolve("Data fetched");
-              }, 1000);
-            });
-            console.log(result);
-          } catch (error) {
-            console.error(error);
-          }
-        }
+            }, 1000);
+        });
+        console.log(result);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+fetchData();</code></pre>
+                        <ul class="code-explanation">
+                            <li>Từ khóa <code>async</code> biến một hàm thành async function</li>
+                            <li>Từ khóa <code>await</code> tạm dừng thực thi cho đến khi Promise được giải quyết</li>
+                            <li><code>Try/catch</code> được sử dụng để xử lý lỗi một cách dễ dàng</li>
+                        </ul>
+                    </div>
         
-        fetchData();</code></pre>
+                    <div class="code-example">
+                        <h4>Xử lý nhiều Promise tuần tự</h4>
+                        <pre><code class="language-javascript">async function processUserData() {
+    try {
+        const user = await fetchUser(1);        // Đợi lấy thông tin user
+        const posts = await fetchPosts(user.id); // Đợi lấy posts của user
+        const comments = await fetchComments(posts[0].id); // Đợi lấy comments
+        
+        return { user, posts, comments };
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}</code></pre>
+                        <ul class="code-explanation">
+                            <li>Các Promise được xử lý tuần tự, dễ theo dõi luồng thực thi</li>
+                            <li>Mỗi bước đợi kết quả từ bước trước đó</li>
+                        </ul>
+                    </div>
+        
+                    <div class="code-example">
+                        <h4>Xử lý Promise song song với Promise.all</h4>
+                        <pre><code class="language-javascript">async function fetchAllData() {
+    try {
+        const [users, posts, comments] = await Promise.all([
+            fetchUsers(),
+            fetchPosts(),
+            fetchComments()
+        ]);
+        
+        return { users, posts, comments };
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}</code></pre>
+                        <ul class="code-explanation">
+                            <li><code>Promise.all</code> cho phép thực thi nhiều Promise cùng lúc</li>
+                            <li>Tất cả Promise phải thành công, nếu một Promise thất bại, tất cả sẽ thất bại</li>
+                        </ul>
+                    </div>
+        
+                    <div class="code-example">
+                        <h4>Async/Await với Array methods</h4>
+                        <pre><code class="language-javascript">async function processUsers(userIds) {
+    // Không tốt: xử lý tuần tự
+    for (const id of userIds) {
+        await processUser(id);
+    }
+
+    // Tốt hơn: xử lý song song
+    const promises = userIds.map(id => processUser(id));
+    await Promise.all(promises);
+}</code></pre>
+                        <ul class="code-explanation">
+                            <li>Sử dụng <code>map</code> để tạo mảng các Promise</li>
+                            <li><code>Promise.all</code> để thực thi song song, cải thiện hiệu suất</li>
+                        </ul>
+                    </div>
+        
+                    <div class="code-example">
+                        <h4>Error Handling nâng cao</h4>
+                        <pre><code class="language-javascript">async function fetchWithRetry(url, retries = 3) {
+    for (let i = 0; i < retries; i++) {
+        try {
+            const response = await fetch(url);
+            return await response.json();
+        } catch (error) {
+            if (i === retries - 1) throw error;
+            console.log(`Retry ${i + 1}/${retries}`);
+            await new Promise(resolve => 
+                setTimeout(resolve, 1000 * Math.pow(2, i))
+            );
+        }
+    }
+}</code></pre>
+                        <ul class="code-explanation">
+                            <li>Tự động thử lại khi gặp lỗi</li>
+                            <li>Sử dụng <code>exponential backoff</code> để tăng thời gian chờ giữa các lần thử</li>
+                        </ul>
                     </div>
                 </section>
         
@@ -192,6 +281,10 @@
         
                 <section class="post-section">
                     <h2>Kết luận</h2>
+                    <figure class="blog-image">
+                        <img src="../imgs/js-async-await2.png" alt="JavaScript Async/Await">
+                        <figcaption>JavaScript Async/Await</figcaption>
+                    </figure>
                     <p><code>Promise</code> và <code>async/await</code> là các công cụ mạnh mẽ giúp xử lý bất đồng bộ trong JavaScript dễ dàng hơn. Trong đó, <code>async/await</code> được khuyến khích sử dụng vì sự rõ ràng và dễ đọc. Hiểu rõ các khái niệm này sẽ giúp bạn phát triển các ứng dụng JavaScript hiệu quả hơn.</p>
                 </section>
             </div>

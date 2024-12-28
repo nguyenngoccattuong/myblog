@@ -31,10 +31,7 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="../blog.html">Blog</a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="blog.html#java">Java Programming</a>
-                            <a class="dropdown-item" href="blog.html#javascript">JavaScript</a>
-                        </div>
+                       
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../contact.html">Contact</a>
@@ -71,9 +68,48 @@
                 <div class="post-intro">
                     <p>Khi làm việc với JavaScript, việc thao tác với DOM (Document Object Model) là một trong những nhiệm vụ phổ biến nhất. Trong bài viết này, chúng ta sẽ tìm hiểu các cách truy cập và thay đổi DOM hiệu quả.</p>
                 </div>
+                <figure class="blog-image">
+                    <img src="../imgs/js-dom.png" alt="JavaScript DOM">
+                    <figcaption>JavaScript DOM</figcaption>
+                </figure>
+                <section class="post-section">
+                    <h2>1. DOM là gì?</h2>
+                    <p>DOM (Document Object Model) là một cấu trúc dữ liệu biểu diễn trang web dưới dạng một cây các node. Mỗi node có thể là một phần tử HTML, văn bản, hoặc thuộc tính. DOM cung cấp một cách để truy cập và thao tác với các phần tử HTML trong trang web.</p>
+                    
+                    <h3>Cấu trúc DOM</h3>
+                    <ul>
+                        <li><strong>Document:</strong> Node gốc, đại diện cho toàn bộ trang web</li>
+                        <li><strong>Element nodes:</strong> Các thẻ HTML như div, p, span</li>
+                        <li><strong>Text nodes:</strong> Nội dung văn bản trong các element</li>
+                        <li><strong>Attribute nodes:</strong> Các thuộc tính của element</li>
+                    </ul>
+        
+                    <div class="dom-tree-example">
+                        <pre><code class="language-html">document
+        └── html
+            ├── head
+            │   ├── title
+            │   └── meta
+            └── body
+                ├── div
+                │   ├── h1
+                │   └── p
+                └── span</code></pre>
+                    </div>
+                    
+                    <h3>DOM Manipulation bao gồm:</h3>
+                    <ul>
+                        <li><strong>Truy cập elements:</strong> Tìm và chọn các phần tử trong DOM</li>
+                        <li><strong>Thay đổi nội dung:</strong> Sửa đổi text hoặc HTML của elements</li>
+                        <li><strong>Thay đổi styles:</strong> Điều chỉnh CSS của elements</li>
+                        <li><strong>Thêm/xóa elements:</strong> Tạo mới hoặc xóa elements khỏi DOM</li>
+                        <li><strong>Xử lý sự kiện:</strong> Phản hồi với các tương tác của người dùng</li>
+                    </ul>
+                    
+                </section>
         
                 <section class="post-section">
-                    <h2>1. Cách truy cập và thay đổi DOM hiệu quả</h2>
+                    <h2>2. Cách truy cập và thay đổi DOM hiệu quả</h2>
                     
                     <h3>Truy cập DOM</h3>
                     <div class="code-example">
@@ -139,7 +175,7 @@ parentElement.appendChild(newElement);</code></pre>
                 </section>
         
                 <section class="post-section">
-                    <h2>2. So sánh giữa Vanilla JavaScript và jQuery</h2>
+                    <h2>3. So sánh giữa Vanilla JavaScript và jQuery</h2>
                     
                     <div class="comparison-table">
                         <table>
@@ -172,7 +208,7 @@ parentElement.appendChild(newElement);</code></pre>
                 </section>
         
                 <section class="post-section">
-                    <h2>3. Các tối ưu hiệu suất</h2>
+                    <h2>4. Các tối ưu hiệu suất</h2>
                     
                     <div class="code-example">
                         <h4>Sử dụng DocumentFragment</h4>
@@ -224,6 +260,10 @@ parentElement.appendChild(newElement);</code></pre>
         
                 <section class="post-section">
                     <h2>Kết luận</h2>
+                    <figure class="blog-image">
+                        <img src="../imgs/js-dom2.png" alt="JavaScript DOM">
+                        <figcaption>JavaScript DOM</figcaption>
+                    </figure>
                     <p>Việc thao tác DOM hiệu quả không chỉ giúp cải thiện hiệu suất mà còn làm cho ứng dụng của bạn trở nên mượt mà và dễ dàng bảo trì hơn. Hãy luôn nhớ tối ưu hóa cách bạn thao tác với DOM để đảm bảo rằng ứng dụng của bạn hoạt động nhanh và hiệu quả nhất có thể.</p>
                 </section>
             </div>
@@ -232,7 +272,7 @@ parentElement.appendChild(newElement);</code></pre>
                 <a href="javascript-async-await.html" class="prev-post">
                      ← Bài trước: JavaScript Async/Await
                 </a>
-                <a href="../blog.html class="next-post">
+                <a href="../blog.html" class="next-post">
                     JavaScript
                 </a>
             </div>

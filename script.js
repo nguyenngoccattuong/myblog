@@ -166,4 +166,53 @@ function setActiveNavItem() {
 // Call when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     setActiveNavItem();
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Get current page path
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    // Function to set active state
+    function setActiveLink() {
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            // Remove 'active' class first
+            link.classList.remove('active');
+            // Add 'active' class if href matches current page
+            if (href === currentPage) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    // Set initial active state
+    setActiveLink();
+
+    // Handle scroll
+    window.addEventListener('scroll', function() {
+        const st = window.pageYOffset || document.documentElement.scrollTop;
+        const navbar = document.querySelector('.navbar');
+        
+        // Add/remove background on scroll
+        if (st > 50) {
+            navbar.classList.add('navbar-scrolled');
+        } else {
+            navbar.classList.remove('navbar-scrolled');
+        }
+        
+        // Ensure active state remains on current page
+        setActiveLink();
+    });
+
+    // Handle click events
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            // Only handle if it's not the current page
+            if (link.getAttribute('href') !== currentPage) {
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            }
+        });
+    });
 }); 

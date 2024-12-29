@@ -2873,3 +2873,42 @@ body {
 .section-title:hover::after {
     transform: translateX(0);
 }
+
+/* Contact CTA Button */
+.contact-cta {
+    margin-top: 2 rem;
+    text-align: end;
+}
+
+.contact-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 28px;
+    background: linear-gradient(to right, var(--color-5), var(--color-6));
+    color: white;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;  /* Tăng độ đậm của font */
+    letter-spacing: 0.5px;  /* Tăng khoảng cách chữ */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.contact-button span {
+    margin-right: 10px;
+}
+
+.contact-button i {
+    font-size: 14px;
+    transition: transform 0.3s ease;
+}
+
+.contact-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    color: white;
+}
+
+.contact-button:hover i {
+    transform: translateX(5px);
+}
